@@ -1,7 +1,7 @@
 package com.lacombe.cashregister;
 
-import com.lacombe.cashregister.CashRegister;
-import org.assertj.core.api.Assertions;
+import com.lacombe.cashregister.domain.CashRegister;
+import com.lacombe.cashregister.domain.Price;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -14,7 +14,6 @@ public class CashRegisterTest {
         Price price = new Price(1.2);
         double quantity=1;
         Price total = cashRegister.total(price, quantity);
-        Price totalExpected = new Price(1.2);
-        assertThat(total).isEqualTo(totalExpected);
+        assertThat(total).isEqualTo(new Price(1.2));
     }
 }
