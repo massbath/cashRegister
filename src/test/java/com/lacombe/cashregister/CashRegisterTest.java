@@ -11,9 +11,9 @@ public class CashRegisterTest {
     @Test
     public void totalShouldReturnThePriceByQuantity() {
         CashRegister cashRegister = new CashRegister();
-        Price price = new Price(1.2);
+        Price price =  Price.valueOf(1.2);
         double quantity=1;
         Price total = cashRegister.total(price, quantity);
-        assertThat(total).isEqualTo(new Price(1.2));
+        assertThat(total).isEqualTo(Price.valueOf(1.2));
     }
 }

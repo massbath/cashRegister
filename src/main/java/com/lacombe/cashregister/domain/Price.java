@@ -2,14 +2,20 @@ package com.lacombe.cashregister.domain;
 
 import java.util.Objects;
 
-public final class Price {
-    final double value;
+public  class Price {
+   private final double value;
 
-    public Price(double value) {
+    private Price(double value) {
         this.value = value;
+    }
+    public static Price valueOf(double value){
+        return new Price(value);
     }
 
 
+    public Price multiplyBy(double quantity){
+            return new Price(value*quantity);
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -22,5 +28,12 @@ public final class Price {
     @Override
     public int hashCode() {
         return Objects.hash(value);
+    }
+
+    @Override
+    public String toString() {
+        return "Price{" +
+                "value=" + value +
+                '}';
     }
 }
