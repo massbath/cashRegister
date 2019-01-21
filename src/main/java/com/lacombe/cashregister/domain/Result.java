@@ -62,10 +62,6 @@ public abstract class Result {
             this.foundPrice = unitPrice;
         }
 
-        public Found multiplyBy(Quantity quantity) {
-            return new Found(foundPrice.multiplyBy(quantity));
-        }
-
         @Override
         public String toString() {
             return "Found{" +
