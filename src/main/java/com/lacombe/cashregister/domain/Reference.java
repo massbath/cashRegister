@@ -3,17 +3,17 @@ package com.lacombe.cashregister.domain;
 public class Reference {
 
     private final String itemCode;
-    private final Price price;
+    private final Price unitPrice;
 
 
     private Reference(String itemCode, Price price) {
         this.itemCode = itemCode;
-        this.price = price;
+        this.unitPrice = price;
     }
 
 
-    public Price getPrice() {
-        return price;
+    public Price getUnitPrice() {
+        return unitPrice;
     }
 
     public boolean hasSameItemCode(String itemCode) {
@@ -25,10 +25,9 @@ public class Reference {
     public String toString() {
         return "Reference{" +
                 "itemCode='" + itemCode + '\'' +
-                ", price=" + price +
+                ", unitPrice=" + unitPrice +
                 '}';
     }
-
 
     public static class ReferenceBuilder {
         private String itemCode;

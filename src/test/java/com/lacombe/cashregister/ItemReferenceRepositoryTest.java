@@ -2,6 +2,7 @@ package com.lacombe.cashregister;
 
 import com.lacombe.cashregister.domain.ItemReferenceRepository;
 import com.lacombe.cashregister.domain.Price;
+import com.lacombe.cashregister.domain.Result;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 import org.junit.Test;
@@ -20,11 +21,12 @@ public class ItemReferenceRepositoryTest {
     @Parameters({"APPLE, 1.20", "BANANA,1.90"})
     @Test
     public void findThePriceGiveAnItemCode(String itemCode, double unitPrice) {
-        assertThat(itemReferenceRepository.findPrice(itemCode)).isEqualTo(Price.valueOf(unitPrice));
+        assertThat(itemReferenceRepository.findPrice(itemCode)).isEqualTo(Result.found(Price.valueOf(unitPrice)));
     }
 
     @Test
     public void searchAnUnknowItem() {
-        assertThat(itemReferenceRepository.findPrice("PEACH")).isNull();
+        assertThat(itemReferenceRepository.findPrice("PEACH")).isEqualTo(Result.notFound("PEACH"));
+
     }
 }

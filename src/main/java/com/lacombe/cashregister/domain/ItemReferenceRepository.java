@@ -13,11 +13,11 @@ public class ItemReferenceRepository {
         this.references.addAll(Arrays.asList(references));
     }
 
-    public Price findPrice(String itemCode) {
+    public Result findPrice(String itemCode) {
         for (Reference reference : references) {
             if (reference.hasSameItemCode(itemCode))
-                return reference.getPrice();
+                return Result.found(reference.getUnitPrice());
         }
-        return null;
+        return Result.notFound(itemCode);
     }
 }
