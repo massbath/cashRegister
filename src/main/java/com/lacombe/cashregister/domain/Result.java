@@ -2,8 +2,14 @@ package com.lacombe.cashregister.domain;
 
 
 import java.util.Objects;
+import java.util.function.UnaryOperator;
 
 public abstract class Result {
+
+    abstract Result map(UnaryOperator<Price> f);
+
+    private Result() {
+    }
 
     public static NotFound notFound(String itemCode) {
         return new NotFound(itemCode);
@@ -12,6 +18,7 @@ public abstract class Result {
     public static Result found(Price unitPrice) {
         return new Found(unitPrice);
     }
+
 
     public static class NotFound extends Result {
         final String notFoundItemCode;
@@ -40,6 +47,11 @@ public abstract class Result {
         public int hashCode() {
             return Objects.hash(notFoundItemCode);
         }
+
+        @Override
+        Result map(UnaryOperator<Price> f) {
+            return this;
+        }
     }
 
 
@@ -48,6 +60,10 @@ public abstract class Result {
 
         private Found(Price unitPrice) {
             this.foundPrice = unitPrice;
+        }
+
+        public Found multiplyBy(Quantity quantity) {
+            return new Found(foundPrice.multiplyBy(quantity));
         }
 
         @Override
@@ -68,6 +84,11 @@ public abstract class Result {
         @Override
         public int hashCode() {
             return Objects.hash(foundPrice);
+        }
+
+        @Override
+        Result map(UnaryOperator<Price> f) {
+            return Result.found(f.apply(foundPrice));
         }
     }
 
