@@ -1,4 +1,4 @@
-package com.lacombe.cashregister;
+package com.lacombe.cashregister.domain;
 
 import java.util.Objects;
 

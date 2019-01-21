@@ -2,6 +2,7 @@ package com.lacombe.cashregister;
 
 import com.lacombe.cashregister.domain.CashRegister;
 import com.lacombe.cashregister.domain.Price;
+import com.lacombe.cashregister.domain.Quantity;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

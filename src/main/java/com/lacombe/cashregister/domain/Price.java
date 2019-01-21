@@ -1,7 +1,5 @@
 package com.lacombe.cashregister.domain;
 
-import com.lacombe.cashregister.Quantity;
-
 import java.util.Objects;
 
 public  class Price {
@@ -16,7 +14,7 @@ public  class Price {
 
 
     public Price multiplyBy(Quantity quantity) {
-        return new Price(quantity.multipliedBy(value));
+        return Price.valueOf(quantity.multipliedBy(value));
     }
 
     @Override
