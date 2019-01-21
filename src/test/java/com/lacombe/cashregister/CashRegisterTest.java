@@ -9,11 +9,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CashRegisterTest {
 
     @Test
-    public void totalShoulReturnThePriceByQuantity() {
+    public void totalShouldReturnThePriceByQuantity() {
         CashRegister cashRegister = new CashRegister();
-        double price = 1.2;
+        Price price = new Price(1.2);
         double quantity=1;
-        double total = cashRegister.total(price, quantity);
-        assertThat(total).isEqualTo(1.2);
+        Price total = cashRegister.total(price, quantity);
+        Price totalExpected = new Price(1.2);
+        assertThat(total).isEqualTo(totalExpected);
     }
 }

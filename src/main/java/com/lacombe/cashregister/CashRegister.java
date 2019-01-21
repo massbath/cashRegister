@@ -1,7 +1,7 @@
 package com.lacombe.cashregister;
 
-public class CashRegister {
-    public double total(double price, double quantity) {
-        return price*quantity;
+class CashRegister {
+    Price total(Price price, double quantity) {
+        return price.byQuantity(quantity);
     }
 }
